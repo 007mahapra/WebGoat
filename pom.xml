@@ -109,9 +109,7 @@
 
 
   <properties>
-    <!--Sonar Properties Mahaveer-->
-    <sonar.organization>mahaveer-sonar</sonar.organization>
-    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+
     <!-- Shared properties with plugins and version numbers across submodules-->
     <asciidoctorj.version>2.5.13</asciidoctorj.version>
     <bootstrap.version>5.3.3</bootstrap.version>
@@ -155,7 +153,9 @@
     <xml-resolver.version>1.2</xml-resolver.version>
     <xstream.version>1.4.5</xstream.version>
     <!-- do not update necessary for lesson -->
-    <zxcvbn.version>1.9.0</zxcvbn.version>
+    <zxcvbn.version>1.9.0</zxcvbn.version>    
+    <sonar.organization>mahaveer-sonar</sonar.organization>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
   </properties>
 
   <dependencyManagement>
