@@ -680,7 +680,7 @@
   <executions>
     <execution>
       <goals>
-        <goal>check</goal>
+        <goal>sonar</goal>
       </goals>
     </execution>
   </executions>
@@ -698,7 +698,7 @@
     <properties>
      <sonar.organization>mahaveer-sonar</sonar.organization>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-    <sonar.maven.scanAll>true</sonar.maven.scanAll> 
+    <sonar.maven.scanAll>true</sonar.maven.scanAll>
     </properties>
   </profile>
     <profile>
