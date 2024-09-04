@@ -110,7 +110,7 @@
 
   <properties>
 
-    <!-- Shared properties with plugins and version numbers across submodules-->
+    <!-- Shared properties with plugins and version numbers across submodules -->
     <asciidoctorj.version>2.5.13</asciidoctorj.version>
     <bootstrap.version>5.3.3</bootstrap.version>
     <cglib.version>3.3.0</cglib.version>
@@ -153,10 +153,8 @@
     <xml-resolver.version>1.2</xml-resolver.version>
     <xstream.version>1.4.5</xstream.version>
     <!-- do not update necessary for lesson -->
-    <zxcvbn.version>1.9.0</zxcvbn.version>    
-    <sonar.organization>mahaveer-sonar</sonar.organization>
-    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-    
+    <zxcvbn.version>1.9.0</zxcvbn.version>  
+
   </properties>
 
   <dependencyManagement>
@@ -676,9 +674,31 @@
         <artifactId>maven-compiler-plugin</artifactId>
       </plugin>
     </plugins>
+    <plugin>
+  <groupId>org.sonarsource.scanner.maven</groupId>
+  <artifactId>sonar-maven-plugin</artifactId>
+  <version>3.9.1.2184</version> <!-- Replace with the latest version -->
+  <executions>
+    <execution>
+      <goals>
+        <goal>sonar</goal>
+      </goals>
+    </execution>
+  </executions>
+</plugin>
   </build>
 
   <profiles>
+   <profile>
+    <id>sonar</id>
+    <activation>
+      <activeByDefault>true</activeByDefault>
+    </activation>
+    <properties>
+     <sonar.organization>mahaveer-sonar</sonar.organization>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url> <!-- Replace with your SonarQube instance URL -->
+    </properties>
+  </profile>
     <profile>
       <id>local-server</id>
     </profile>
