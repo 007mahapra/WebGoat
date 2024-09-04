@@ -1,26 +1,8 @@
-# name: SonarCloud
-# on:
-#   push:
-#     branches:
-#       - main
-#   pull_request:
-#     types: [opened, synchronize, reopened] # Mahaveer : Remove this line as  not using this
-#     types: [closed] # Mahaveer : If the pull request is closed trigger the workflow 
-
-#https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows#running-a-workflow-when-a-pull-request-is-approved
-# on:
-#   pull_request_target:
-#     types:
-#       - opened
-#     branches:
-#         - main  # Mahaveer : Self approval feature not available so triggering the workflow on pull request opened
-name: Sonar SAST SCAN
+name: Run Task on Merge to Main
 on:
   push:
     branches:
       - main
-  pull_request:
-    types: [opened, synchronize, reopened]
 
 jobs:
   build:
@@ -54,4 +36,4 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: | 
          mvn spotless:apply
-         mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=mahaveer-sonar_webgoat-scb -Dcheckstyle.skip
+         mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=mahaveer-sonar_webgoat-scb #-Dcheckstyle.skip
