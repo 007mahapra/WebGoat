@@ -24,7 +24,7 @@ on:
 
 jobs:
   build:
-    name: Build and analyze
+    name: Sonar SAST Scan
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.6

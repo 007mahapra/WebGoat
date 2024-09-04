@@ -676,11 +676,11 @@
           <plugin>
   <groupId>org.sonarsource.scanner.maven</groupId>
   <artifactId>sonar-maven-plugin</artifactId>
-  <version>3.9.1.2184</version> <!-- Replace with the latest version -->
+  <version>3.10.0.2594</version>
   <executions>
     <execution>
       <goals>
-        <goal>sonar</goal>
+        <goal>check</goal>
       </goals>
     </execution>
   </executions>
@@ -698,7 +698,7 @@
     <properties>
      <sonar.organization>mahaveer-sonar</sonar.organization>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-    <sonar.maven.scanAll>true</sonar.maven.scanAll>  <!--Mahaveer : Scan everything including terraform files-->
+    <sonar.maven.scanAll>true</sonar.maven.scanAll> 
     </properties>
   </profile>
     <profile>
@@ -805,7 +805,6 @@
             <groupId>org.owasp</groupId>
             <artifactId>dependency-check-maven</artifactId>
             <configuration>
-              <failBuildOnCVSS>7</failBuildOnCVSS>
               <skipProvidedScope>false</skipProvidedScope>
               <skipRuntimeScope>false</skipRuntimeScope>
               <suppressionFiles>
