@@ -156,6 +156,7 @@
     <zxcvbn.version>1.9.0</zxcvbn.version>    
     <sonar.organization>mahaveer-sonar</sonar.organization>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+    
   </properties>
 
   <dependencyManagement>
