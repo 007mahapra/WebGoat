@@ -21,7 +21,9 @@ jobs:
           java-version: '21'
 
       - name: Build project with Maven
-        run: mvn clean install
+        run: |
+          mvn spotless:apply
+          mvn clean install
       
       - name: Depcheck
         uses: dependency-check/Dependency-Check_Action@main
