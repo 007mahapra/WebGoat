@@ -1,0 +1,10 @@
+on:
+    pull_request_target:
+      types:
+        - assigned
+jobs:
+  Assigned:
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo The PR was merged
