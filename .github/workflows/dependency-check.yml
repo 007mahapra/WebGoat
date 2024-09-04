@@ -1,25 +1,24 @@
-# name: SonarCloud
-# on:
-#   push:
-#     branches:
-#       - main
-#   pull_request:
-#     #types: [opened, synchronize, reopened] # Mahaveer : Remove this line as  not using this
+name: Dependency Check
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened] # Mahaveer : Remove this line as  not using this
 #     types: [closed] # Mahaveer : If the pull request is closed trigger the workflow 
 
-#https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows#running-a-workflow-when-a-pull-request-is-approved
-on:
-  pull_request_target:
-    types:
-      - opened
-    branches:
-      - main  # Mahaveer : Self approval feature not available so triggering the workflow on pull request opened
+# #https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows#running-a-workflow-when-a-pull-request-is-approved
+# on:
+#   pull_request_target:
+#     types:
+#       - opened
+#     branches:
+#       - main  # Mahaveer : Self approval feature not available so triggering the workflow on pull request opened
   # push:
   #   branches: 
   #     - main   # Mahaveer :If pushed to mai 
 jobs:
   build:
-    if: github.event.review.state == 'approved'
     name: Dependency Check Scan
     runs-on: ubuntu-latest
     steps:
