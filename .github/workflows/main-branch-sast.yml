@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: Sonar SAST Scan
+    name: Scan After merged to Main
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.6

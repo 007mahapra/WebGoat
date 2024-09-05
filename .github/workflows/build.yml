@@ -14,13 +14,17 @@
 #       - opened
 #     branches:
 #         - main  # Mahaveer : Self approval feature not available so triggering the workflow on pull request opened
-name: Sonar SAST SCAN
+# name: Sonar SAST SCAN
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     types: [opened, synchronize, reopened]
+
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    types: [opened, synchronize, reopened]
+  workflow_call:
+    
 
 jobs:
   build:
