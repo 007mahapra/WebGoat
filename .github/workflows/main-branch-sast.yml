@@ -37,3 +37,9 @@ jobs:
         run: | 
          mvn spotless:apply
          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=mahaveer-sonar_webgoat-scb #-Dcheckstyle.skip
+      
+      - name: Get SonarQube Report Link
+        run: | 
+         echo "SonarQube Report Link: ${{ env.SONAR_REPORT_LINK }} " > SonarQube_Report_Link.txt
+         
+      
