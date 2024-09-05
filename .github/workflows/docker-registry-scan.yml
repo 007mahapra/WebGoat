@@ -34,3 +34,19 @@ jobs:
         uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: 'trivy-docker-results.sarif'
+
+      - name: Generate HTML Report
+        uses: aquasecurity/trivy-action@0.20.0
+        with:
+          scan-type: 'fs'
+          ignore-unfixed: true
+          format: 'HTML'
+          output: 'trivy-doker-results.html'
+          severity: 'CRITICAL'
+
+
+      - name: Upload Docker Scan Report
+        uses: actions/upload-artifact@master
+        with:
+          name: Docker Scan Report
+          path: trivy-doker-results.html
