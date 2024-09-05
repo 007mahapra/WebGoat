@@ -24,8 +24,11 @@
 
 on:
   workflow_call:
+    inputs:
+      SNR_TOKEN:
+        required: true
+        type: string
     
-
 jobs:
   build:
     name: Sonar SAST Scan
@@ -55,7 +58,7 @@ jobs:
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_TOKEN: ${{ inputs.SNR_TOKEN }}
         run: | 
          mvn spotless:apply
          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=mahaveer-sonar_webgoat-scb -Dcheckstyle.skip

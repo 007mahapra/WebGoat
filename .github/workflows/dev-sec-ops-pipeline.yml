@@ -9,13 +9,14 @@ on:
     push:
         branches:
             - main
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} #https://stackoverflow.com/questions/69758227/github-workflow-does-not-read-variables-from-environments
+
 jobs:
   # Run SnarQube Analysis
   sast_sonar_scan:
     uses: ./.github/workflows/build.yml
+    with:
+      SNR_TOKEN: ${{ secrets.DB_PASSWORD }}
+      #https://stackoverflow.com/questions/69758227/github-workflow-does-not-read-variables-from-environments
 
   # Run Credential Check
   depenencies_check:
