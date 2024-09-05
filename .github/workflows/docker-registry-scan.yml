@@ -27,7 +27,7 @@ jobs:
 
       - name: Build the Docker image
         run: |
-          docker build -t ${{github.repository}}:${{ github.sha }} .
+          docker build -t webgoat:${{ github.sha }} .
 
       - name: Install Trivy  #https://github.com/aquasecurity/trivy
         run: |
@@ -38,7 +38,7 @@ jobs:
       #  Scan the Docker image for vulnerabilities
       - name: Scan Docker image for vulnerabilities
         run: |
-          trivy image --exit-code 1 --severity HIGH,CRITICAL  ${{github.repository}}:${{ github.sha }}
+          trivy image --exit-code 1 --severity HIGH,CRITICAL  webgoat:${{ github.sha }}
 
       # Upload the Trivy report as an artifact
       - name: Upload Trivy scan report
