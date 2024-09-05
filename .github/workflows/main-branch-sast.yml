@@ -40,11 +40,11 @@ jobs:
       
       - name: Get SonarQube Report Link
         run: | 
-         echo "SonarQube Report Link: https://sonarcloud.io/summary/overall?id=mahaveer-sonar_webgoat-scb " > SonarQube_Report_Link.txt
-         
-
-         - name: Sonar Qube Report Link Artifact
-         uses: actions/upload-artifact@master
-         with:
-           name: SonarQube_Report_Link
-           path: ${{github.workspace}}/SonarQube_Report_Link.txt     
+          echo 'SonarQube Report Link: https://sonarcloud.io/summary/overall?id=mahaveer-sonar_webgoat-scb' > SonarQube_Report_Link.txt
+          
+ 
+      - name: Sonar Qube Report Link Artifact
+        uses: actions/upload-artifact@master
+        with:
+            name: SonarQube_Report_Link
+            path: SonarQube_Report_Link.txt     
