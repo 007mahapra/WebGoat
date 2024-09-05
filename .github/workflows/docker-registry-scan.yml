@@ -14,35 +14,23 @@ on:
 # Mahaveer https://github.com/aquasecurity/trivy-action
 
 jobs:
-  vulnerability-scan:
-    name: Scan Docker Image for Vulnerabilities
-    runs-on: ubuntu-latest
-
+  build:
+    name: Build
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-
-      - name: Build the Docker image
-        run: |
-          docker build -t webgoat:${{ github.sha }} .
-
-      - name: Install Trivy  #https://github.com/aquasecurity/trivy
-        run: |
-          sudo apt-get install wget
-          wget https://github.com/aquasecurity/trivy/releases/download/v0.45.0/trivy_0.45.0_Linux-64bit.deb
-          sudo dpkg -i trivy_0.45.0_Linux-64bit.deb
-
-      #  Scan the Docker image for vulnerabilities
-      - name: Scan Docker image for vulnerabilities
-        run: |
-          trivy image --exit-code 1 --severity HIGH,CRITICAL  webgoat:${{ github.sha }}
-
-      # Upload the Trivy report as an artifact
-      - name: Upload Trivy scan report
-        uses: actions/upload-artifact@v3
+      - name: Run Trivy vulnerability scanner in repo mode
+        uses: aquasecurity/trivy-action@0.20.0
         with:
-          name: trivy-report
-          path: ./trivy-report.txt
+          scan-type: 'fs'
+          ignore-unfixed: true
+          format: 'sarif'
+          output: 'trivy-docker-results.sarif'
+          severity: 'CRITICAL'
+
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-docker-results.sarif'
