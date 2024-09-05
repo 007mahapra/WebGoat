@@ -1,4 +1,4 @@
-name: Run Task on Merge to Main
+name: "DEVSECOPS - SAST Sonar SACN Analysis - Main branch - SONARCLOUD"
 on:
   push:
     branches:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: Scan After merged to Main
+    name: sast_scan_main_branch_sonarcloud
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.6
