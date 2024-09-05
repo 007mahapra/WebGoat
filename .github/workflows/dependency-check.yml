@@ -1,4 +1,4 @@
-name: Dependency Check
+name: "DEVSECOPS -Dependency Check Scan - Dependency-Check"
 # on:
 #   push:
 #     branches:

@@ -1,4 +1,4 @@
-name: Docker Vulnerability Scan
+name: "DEVSECOPS - Docker Vulnerability Scan - TRIVY"
 
 # on:
 #   push:
@@ -15,7 +15,7 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: Docker Vulnerability Scan
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout code

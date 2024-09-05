@@ -1,4 +1,4 @@
-name: "Main / Pull Pipeline "
+name: "DEVSECOPS - Master Workflow CICD Workflow - Mahaveer"
 on:
     pull_request:
         # paths-ignore:
