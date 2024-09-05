@@ -29,3 +29,7 @@ jobs:
   # Run Dependencies Check
   password_check:
     uses: ./.github/workflows/password-check.yml
+
+  # Run docker-registry-scan
+  docker_image_scan:
+    uses: ./.github/workflows/docker-registry-scan.yml
