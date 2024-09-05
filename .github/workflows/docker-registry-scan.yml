@@ -35,13 +35,13 @@ jobs:
         with:
           sarif_file: 'trivy-docker-results.sarif'
 
-      - name: Generate HTML Report
+      - name: Generate TXT Report
         uses: aquasecurity/trivy-action@0.20.0
         with:
           scan-type: 'fs'
           ignore-unfixed: true
-          format: 'HTML'
-          output: 'trivy-doker-results.html'
+          format: 'table'
+          output: 'trivy-doker-results.txt'
           severity: 'CRITICAL'
 
 
@@ -49,4 +49,4 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: Docker Scan Report
-          path: trivy-doker-results.html
+          path: trivy-doker-results.txt
