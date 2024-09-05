@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: Sonar SAST Scan
+    name: Scan After merged to Main
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.6
@@ -37,3 +37,14 @@ jobs:
         run: | 
          mvn spotless:apply
          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=mahaveer-sonar_webgoat-scb #-Dcheckstyle.skip
+      
+      - name: Get SonarQube Report Link
+        run: | 
+          echo 'SonarQube Report Link: https://sonarcloud.io/summary/overall?id=mahaveer-sonar_webgoat-scb' > SonarQube_Report_Link.txt
+          
+ 
+      - name: Sonar Qube Report Link Artifact
+        uses: actions/upload-artifact@master
+        with:
+            name: SonarQube_Report_Link
+            path: SonarQube_Report_Link.txt     
