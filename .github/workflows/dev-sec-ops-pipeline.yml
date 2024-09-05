@@ -1,0 +1,35 @@
+name: "DEVSECOPS - Master Workflow CICD Workflow - Mahaveer"
+on:
+    pull_request:
+        # paths-ignore:
+        #     - '.txt'
+        #     - 'LICENSE'
+        #     - 'docs/**'
+        branches: [ main ]
+    push:
+        branches:
+            - main
+
+# env:
+#   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+#   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+             #https://stackoverflow.com/questions/69758227/github-workflow-does-not-read-variables-from-environments
+
+jobs:
+#   # Run SnarQube Analysis
+#   sast_sonar_scan:
+#     uses: ./.github/workflows/build.yml
+     
+
+  # Run Credential Check
+  depenencies_check:
+    uses: ./.github/workflows/dependency-check.yml
+
+  # Run Dependencies Check
+  password_check:
+    uses: ./.github/workflows/password-check.yml
+
+  # Run docker-registry-scan
+  docker_image_scan:
+    uses: ./.github/workflows/docker-registry-scan.yml

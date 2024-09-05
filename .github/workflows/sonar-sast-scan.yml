@@ -1,4 +1,4 @@
-# name: SonarCloud
+name: "DEVSECOPS - SAST Scan - SonarCloud"
 # on:
 #   push:
 #     branches:
@@ -14,17 +14,25 @@
 #       - opened
 #     branches:
 #         - main  # Mahaveer : Self approval feature not available so triggering the workflow on pull request opened
-name: Sonar SAST SCAN
+# name: Sonar SAST SCAN
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     types: [opened, synchronize, reopened]
+
 on:
+  workflow_call:
   push:
     branches:
       - main
   pull_request:
     types: [opened, synchronize, reopened]
-
+    
 jobs:
   build:
-    name: Sonar SAST Scan
+    name: sast_scan_sonarcloud
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.6
@@ -55,3 +63,16 @@ jobs:
         run: | 
          mvn spotless:apply
          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=mahaveer-sonar_webgoat-scb -Dcheckstyle.skip
+ 
+      
+      - name: Get SonarQube Report Link
+        run: | 
+         echo 'SonarQube Report Link: https://sonarcloud.io/summary/overall?id=mahaveer-sonar_webgoat-scb' > SonarQube_Report_Link.txt
+         
+
+      - name: Sonar Qube Report Link Artifact
+        uses: actions/upload-artifact@master
+        with:
+           name: SonarQube_Report_Link
+           path: SonarQube_Report_Link.txt     
+        

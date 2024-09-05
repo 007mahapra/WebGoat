@@ -1,10 +1,12 @@
-name: Dependency Check
+name: "DEVSECOPS -Dependency Check Scan - Dependency-Check"
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     types: [opened, synchronize, reopened]
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    types: [opened, synchronize, reopened]
+  workflow_call:
 
 jobs:
   build:
@@ -44,3 +46,6 @@ jobs:
         with:
           name: Depcheck report
           path: ${{github.workspace}}/reports
+
+# Mahaveer - To Do  : Upload sarif to github
+#https://jeremylong.github.io/DependencyCheck/dependency-check-cli/arguments.html
